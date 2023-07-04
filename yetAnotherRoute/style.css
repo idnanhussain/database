@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono&display=swap');
+@import url("splitting/dist/splitting.css");
+@import url(splitting/dist/splitting-cells.css");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(244, 101, 125);
+}
+
+h1 {
+  font-family: 'Nova Mono', monospace;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  width: 1096px;
+  height: 365px;
+  color: goldenrod;
+  perspective: 900px;
+}
+
+.char {
+  offset-path: path('M.5 122.7s24.7-275 276.9 0c327.1 356.7 266.1-330.3 548-33.3 256.9 270.7 271.1 0 271.1 0');
+  offset-distance: calc(var(--char-index) * 1.75rem);
+  position: absolute;
+  animation: wave 2200ms cubic-bezier(.62,.01,.42,1.01) infinite alternate calc(var(--char-index) * 20ms), wave2 2200ms cubic-bezier(.62,.01,.42,1.01) infinite alternate calc(var(--char-index) * 20ms);
+  transform: perspective(800px) scale(1) rotate3d(0, 0, 0, 0);
+}
+
+@keyframes wave {
+  100% {
+    offset-distance: calc((var(--char-index) * 3rem) + 300px);
+    transform: perspective(800px) scale(1.25) rotate3d(1, 0, 0, 180deg);
+    color: red;
+  }
+}
+
+@keyframes wave2 {
+  100% {
+    offset-distance: calc((var(--char-index) * 3.45rem) + 600px);
+    transform: perspective(800px) scale(1.75) rotate3d(1, 0, 0, 360deg);
+    color: goldenrod;
+  }
+}
